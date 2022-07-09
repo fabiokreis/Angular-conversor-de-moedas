@@ -13,7 +13,7 @@ export class ConversorComponent implements OnInit {
   moedas: Moeda[];
   conversao: Conversao;
   possuiErro: boolean;
-  private conversaoResponse: ConversaoResponse;
+  conversaoResponse: ConversaoResponse;
 
   @ViewChild("conversaoForm") conversaoForm: NgForm;
 
@@ -34,7 +34,15 @@ export class ConversorComponent implements OnInit {
 
   converter(): void {
     if (this.conversaoForm.form.valid) {
-      alert('Convertendo: ' + JSON.stringify(this.conversao));
+      this.conversorService.converter(this.conversao).subscribe((conversorResponse) => (this.tratarResponse(conversorResponse)));
+    }
+  }
+
+  tratarResponse(response: any): void {
+    if (response.success == true) {
+      this.conversaoResponse = response
+    } else {
+      this.possuiErro = true
     }
   }
 
