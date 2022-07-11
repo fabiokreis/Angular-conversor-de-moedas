@@ -6,15 +6,15 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title" id="modalLabel">
-                    Cotação em {{ dataCotacao }}
+                    Cotação em {{ dataCotacao | dataBr }}
                 </h4>
             </div>
             <div class="modal-body text-center">
                 <div>
                     <h2>{{ conversao.valor }} {{ conversao.moedaDe }} = {{ valorConvertido }} {{ conversao.moedaPara }}
                     </h2>
-                    <p>1 {{ conversao.moedaPara }} = {{ cotacaoPara }} {{ conversao.moedaDe }} /
-                        1 {{ conversao.moedaDe }} = {{ cotacaoDe }} {{ conversao.moedaPara }} </p>
+                    <p>1 {{ conversao.moedaDe }} = {{ cotacaoPara }} {{ conversao.moedaPara }} /
+                        1 {{ conversao.moedaPara }} = {{ cotacaoDe }} {{ conversao.moedaDe }} </p>
                 </div>
             </div>
             <div class="modal-footer">
